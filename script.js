@@ -83,15 +83,17 @@ function fadeInOnLoad(img){
 function renderGrid(){
   grid.innerHTML = "";
   allImages = [];
+  works.forEach((w) => {
+    allImages.push({ url:w.url, group:"main" });
+  });
   works.forEach((w, i) => {
     const btn = document.createElement("button");
     btn.className = "tile reveal in";
     btn.dataset.cat = w.cat;
     btn.innerHTML = `<img src="${w.url}" alt="Projet ${labels[w.cat]} — ${i+1}" loading="lazy" decoding="async"><span class="tag mono">${labels[w.cat]}</span>`;
-    btn.addEventListener("click", () => openLightbox(allImages.length));
+    btn.addEventListener("click", () => openLightbox(i)); // index correct, capturé pour cette image précise
     grid.appendChild(btn);
     fadeInOnLoad(btn.querySelector("img"));
-    allImages.push({ url:w.url, group:"main" });
   });
 }
 renderGrid();
@@ -142,24 +144,23 @@ function openProjetLightbox(index){
 }
 function showLightbox(){
   lightbox.classList.add("open");
-  lbImg.classList.remove("loaded"); // repart de zéro à chaque image pour un vrai fondu
   const url = currentSet[currentIndex];
+  lbImg.classList.remove("loaded");
+  lbImg.onload = null;
+  lbImg.src = url;
 
-  // Si l'image est déjà en cache, le navigateur ne redéclenche pas toujours "load" :
-  // on force donc une nouvelle image témoin pour détecter la fin du chargement de façon fiable.
-  const probe = new Image();
-  probe.onload = () => {
-    // on ne met à jour lbImg que si l'utilisateur n'a pas déjà changé d'image entre-temps
-    if(currentSet[currentIndex] === url){
-      lbImg.src = url;
-      requestAnimationFrame(() => lbImg.classList.add("loaded"));
-    }
-  };
-  probe.src = url;
+  const markLoaded = () => lbImg.classList.add("loaded");
+  if(lbImg.complete && lbImg.naturalWidth > 0){
+    // image déjà en cache : on force quand même un fondu visible
+    requestAnimationFrame(markLoaded);
+  } else {
+    lbImg.onload = markLoaded;
+  }
 }
 function closeLightbox(){
   lightbox.classList.remove("open");
   lbImg.classList.remove("loaded");
+  lbImg.onload = null;
   lbImg.src = "";
 }
 document.getElementById("lbClose").addEventListener("click", closeLightbox);
