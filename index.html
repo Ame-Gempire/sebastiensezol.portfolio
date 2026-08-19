@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sébastien Sezol — Graphiste / Infographiste</title>
+<meta name="description" content="Portfolio de Sébastien Sezol, graphiste infographiste spécialisé en mise en page print, web et création graphique.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="#top" class="brand">
+      <span class="reg-mark" aria-hidden="true">
+        <svg viewBox="0 0 26 26">
+          <circle class="c" cx="13" cy="13" r="8"/>
+          <circle class="m" cx="13" cy="13" r="8"/>
+          <line class="y" x1="13" y1="1" x2="13" y2="25"/>
+          <line class="k" x1="1" y1="13" x2="25" y2="13"/>
+        </svg>
+      </span>
+      <span>
+        <span class="brand-name">Sébastien Sezol</span>
+        <span class="brand-tag mono">Graphiste — Infographiste</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle mono" id="navToggle" aria-expanded="false" aria-controls="mainNav">Menu</button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#travaux">Portfolio</a>
+      <a href="#projet">Charte graphique</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+      <span class="nav-social">
+        <a href="https://www.linkedin.com/in/sebastien-sezol/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="https://static.wixstatic.com/media/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png" alt="">
+        </a>
+        <a href="https://www.instagram.com/ame_gempire/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png" alt="">
+        </a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<div class="ticket">
+  <div class="wrap ticket-inner mono">
+    <span>SUPPORT : <b>PRINT / WEB / MOTION</b></span>
+    <span>BASE : <b>Île-de-France</b></span>
+    <span>EXP : <b>6 ANS</b></span>
+    <span>STATUT : <b>DISPONIBLE</b></span>
+  </div>
+</div>
+
+<main id="top">
+
+  <section class="hero" style="border-bottom:1px solid var(--line);padding-top:70px;">
+    <div class="wrap">
+      <div class="hero-top">
+        <span class="eyebrow mono">
+          <span class="reg-mark" aria-hidden="true">
+            <svg viewBox="0 0 26 26">
+              <circle class="c" cx="13" cy="13" r="8"/>
+              <circle class="m" cx="13" cy="13" r="8"/>
+              <line class="y" x1="13" y1="1" x2="13" y2="25"/>
+              <line class="k" x1="1" y1="13" x2="25" y2="13"/>
+            </svg>
+          </span>
+          Fiche projet — Portfolio 2026
+        </span>
+      </div>
+
+      <h1 class="display">Graphiste &amp;<br>infographiste,<br>de la mise en page<br>à l'impression.</h1>
+
+      <p class="hero-sub">6 ans d'expérience en création graphique et mise en page print &amp; web. Rigoureux et efficace dans l'exécution, je transforme des briefs et des contenus complexes en supports visuels clairs et professionnels.</p>
+
+      <div class="hero-cta">
+        <a href="#travaux" class="btn primary">Voir le portfolio →</a>
+        <a href="#contact" class="btn ghost">Me contacter</a>
+      </div>
+
+      <div class="swatch-bar" aria-hidden="true">
+        <span style="background:var(--cyan)"></span>
+        <span style="background:var(--magenta)"></span>
+        <span style="background:var(--yellow)"></span>
+        <span style="background:var(--key)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PORTFOLIO ================= -->
+  <section id="travaux">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Portfolio</h2>
+        <span class="section-num mono">01 — SÉLECTION DE PROJETS</span>
+      </div>
+
+      <div class="filters reveal">
+        <button class="filter-btn active" data-filter="all">Tout</button>
+        <button class="filter-btn" data-filter="print">Print</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="draw">Draw</button>
+      </div>
+
+      <div class="grid reveal" id="portfolioGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= PROJET CHARTE GRAPHIQUE ================= -->
+  <section id="projet">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Projet phare</h2>
+        <span class="section-num mono">02 — CHARTE GRAPHIQUE</span>
+      </div>
+
+      <div class="featured reveal">
+        <div class="featured-info">
+          <h3>Homo Ex Machina</h3>
+          <p>Charte graphique réalisée dans le cadre du projet de fin d'année du Master Direction Artistique Digital.</p>
+          <p>Cette charte définit l'ensemble de la communication visuelle d'un salon consacré aux intelligences artificielles : logotype, système typographique, couleurs, déclinaisons print et signalétique.</p>
+          <div class="featured-meta">
+            <div><span>Type</span><b>Charte graphique</b></div>
+            <div><span>Contexte</span><b>Projet de fin d'année</b></div>
+            <div><span>Formation</span><b>Master DA Digital</b></div>
+            <div><span>Livrables</span><b>Logo, print, signalétique</b></div>
+          </div>
+        </div>
+
+        <div class="featured-grid" id="projetGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= A PROPOS ================= -->
+  <section id="apropos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>À propos</h2>
+        <span class="section-num mono">03 — PROFIL</span>
+      </div>
+
+      <div class="about reveal">
+        <img class="about-photo" src="https://static.wixstatic.com/media/cc5747_743a78a627e64e6b8ee054242cf7381d~mv2.jpg" alt="Portrait de Sébastien Sezol">
+
+        <div class="about-text">
+          <p>Je suis Sébastien Sezol, graphiste infographiste spécialisé dans la création de supports visuels percutants pour des productions print et web.</p>
+          <p>Je mets un point d'honneur à allier rigueur technique et sens de l'exécution pour concevoir des designs clairs, cohérents et efficaces, du brief à la livraison finale.</p>
+          <p>Mon expertise couvre la mise en page de documents, la création graphique, le branding et la conception de contenus web.</p>
+
+          <div class="clients">
+            <span class="clients-label mono">Ils m'ont fait confiance</span>
+            <div class="client-row">
+              <img src="https://static.wixstatic.com/media/cc5747_491c15f5bdad4f7fa0dacd6e79bed437~mv2.jpg" alt="Ministère des Sports et des Jeux Paralympiques">
+              <img src="https://static.wixstatic.com/media/cc5747_b87336b785f3462aa824122bd6a95526~mv2.png" alt="M6 Boutique">
+              <img src="https://static.wixstatic.com/media/cc5747_1a6c4ff4d5a74881948f8108387009ee~mv2.jpeg" alt="Client">
+              <img src="https://static.wixstatic.com/media/cc5747_f14fdbd2108b4a908d122487c20c97a8~mv2.jpg" alt="Diet'Ohm">
+              <img src="https://static.wixstatic.com/media/cc5747_e556dea14d9f4ad09842f592297e9aff~mv2.jpg" alt="Client">
+              <img src="https://static.wixstatic.com/media/cc5747_2408eb2ccab64bde81d8269717672fc6~mv2.jpg" alt="Client">
+              <img src="https://static.wixstatic.com/media/cc5747_ad71833466ec4c7781c67701001bd6fc~mv2.jpg" alt="France TV">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" style="border-bottom:none;">
+    <div class="wrap contact-inner">
+      <div>
+        <span class="section-num mono">04 — CONTACT</span>
+        <h2 class="contact-big" style="margin-top:16px;">On travaille ensemble ?</h2>
+        <p class="contact-note" style="margin-top:18px;">Disponible pour toute question ou proposition de collaboration.</p>
+      </div>
+
+      <div class="contact-list">
+        <a href="mailto:sebastiensezol@gmail.com">✉ &nbsp; sebastiensezol@gmail.com</a>
+        <a href="tel:+33781500193">☎ &nbsp; 07 81 50 01 93</a>
+        <a href="https://www.linkedin.com/in/sebastien-sezol/" target="_blank" rel="noopener">in &nbsp; LinkedIn</a>
+        <a href="https://www.instagram.com/ame_gempire/" target="_blank" rel="noopener">◎ &nbsp; Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;width:100%;">
+    <span>© 2026 Sébastien Sezol</span>
+    <span>Les Ulis (91)</span>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close mono" id="lbClose">Fermer ✕</button>
+  <button class="lightbox-nav prev mono" id="lbPrev" aria-label="Image précédente">←</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lightbox-nav next mono" id="lbNext" aria-label="Image suivante">→</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
