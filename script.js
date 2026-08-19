@@ -71,6 +71,15 @@ const labels = { print:"Print", web:"Web", draw:"Draw" };
 
 let allImages = []; // { url, cat } dans l'ordre affiché, pour la lightbox
 
+// Ajoute la classe "loaded" dès qu'une image finit de charger (ou immédiatement si déjà en cache)
+function fadeInOnLoad(img){
+  if(img.complete && img.naturalWidth > 0){
+    img.classList.add("loaded");
+  } else {
+    img.addEventListener("load", () => img.classList.add("loaded"), { once:true });
+  }
+}
+
 function renderGrid(){
   grid.innerHTML = "";
   allImages = [];
@@ -78,9 +87,10 @@ function renderGrid(){
     const btn = document.createElement("button");
     btn.className = "tile reveal in";
     btn.dataset.cat = w.cat;
-    btn.innerHTML = `<img src="${w.url}" alt="Projet ${labels[w.cat]} — ${i+1}" loading="lazy"><span class="tag mono">${labels[w.cat]}</span>`;
+    btn.innerHTML = `<img src="${w.url}" alt="Projet ${labels[w.cat]} — ${i+1}" loading="lazy" decoding="async"><span class="tag mono">${labels[w.cat]}</span>`;
     btn.addEventListener("click", () => openLightbox(allImages.length));
     grid.appendChild(btn);
+    fadeInOnLoad(btn.querySelector("img"));
     allImages.push({ url:w.url, group:"main" });
   });
 }
@@ -107,8 +117,10 @@ projetImages.forEach((url, i) => {
   img.src = url;
   img.alt = "Homo Ex Machina — planche " + (i+1);
   img.loading = "lazy";
+  img.decoding = "async";
   img.addEventListener("click", () => openProjetLightbox(i));
   projetGrid.appendChild(img);
+  fadeInOnLoad(img);
   projetLightboxImages.push(url);
 });
 
@@ -129,11 +141,25 @@ function openProjetLightbox(index){
   showLightbox();
 }
 function showLightbox(){
-  lbImg.src = currentSet[currentIndex];
   lightbox.classList.add("open");
+  lbImg.classList.remove("loaded"); // repart de zéro à chaque image pour un vrai fondu
+  const url = currentSet[currentIndex];
+
+  // Si l'image est déjà en cache, le navigateur ne redéclenche pas toujours "load" :
+  // on force donc une nouvelle image témoin pour détecter la fin du chargement de façon fiable.
+  const probe = new Image();
+  probe.onload = () => {
+    // on ne met à jour lbImg que si l'utilisateur n'a pas déjà changé d'image entre-temps
+    if(currentSet[currentIndex] === url){
+      lbImg.src = url;
+      requestAnimationFrame(() => lbImg.classList.add("loaded"));
+    }
+  };
+  probe.src = url;
 }
 function closeLightbox(){
   lightbox.classList.remove("open");
+  lbImg.classList.remove("loaded");
   lbImg.src = "";
 }
 document.getElementById("lbClose").addEventListener("click", closeLightbox);
